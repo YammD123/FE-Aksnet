@@ -32,9 +32,15 @@
     "eslint": "8.57.0",
     "eslint-plugin-qwik": "^1.13.0",
     "prettier": "3.3.3",
+    "qwik-image": "^0.0.16",
     "typescript": "5.4.5",
     "undici": "*",
     "vite": "5.3.5",
     "vite-tsconfig-paths": "^4.2.1"
+  },
+  "dependencies": {
+    "@qwikest/icons": "^0.0.13",
+    "@tailwindcss/vite": "^4.1.7",
+    "tailwindcss": "^4.1.7"
   }
 }
