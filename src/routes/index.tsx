@@ -1,19 +1,18 @@
 import { component$ } from "@builder.io/qwik";
-import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
-import { Image } from "qwik-image";
-import { AnimeType } from "~/types/anime-type";
-import { BASE_URL } from "~/utils/base-url";
+import {  type DocumentHead } from "@builder.io/qwik-city";
 import { LuSearch } from "@qwikest/icons/lucide";
+import { Image } from "qwik-image";
 
 export default component$(() => {
   return (
     <>
       <div class="relative w-full h-96 overflow-hidden">
         {/* Gambar background */}
-        <img
+        <Image
           src="/one-piece.jpeg"
           class="absolute top-0 left-0 w-full  object-cover opacity-25 z-0"
           alt="One Piece Background"
+          layout="constrained"
         />
         <div class="absolute w-full h-screen top-0 bottom-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10"></div>
         <div class="absolute w-full h-screen top-0 bottom-0 bg-gradient-to-b from-black via-black/20 to-transparent z-10"></div>
@@ -54,11 +53,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Welcome to Qwik",
+  title: "Aksnet",
   meta: [
     {
       name: "description",
-      content: "Qwik site description",
+      content: "Aksnet adalah platform streaming anime asal Indonesia yang menghadirkan pengalaman menonton seru dengan koleksi anime terlengkap dan update tercepat!",
     },
   ],
 };

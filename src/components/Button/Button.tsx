@@ -1,20 +1,19 @@
-import { $, component$ } from "@builder.io/qwik";
+import { component$, Slot, type QwikMouseEvent, type PropFunction } from "@builder.io/qwik";
 
 interface ButtonProps {
-  label: string;
-  onClick$?: () => void;      // pakai onClick$ untuk Qwik
+  onClick$?: PropFunction<(event: QwikMouseEvent<HTMLButtonElement>) => void>;
   disabled?: boolean;
-  className?: string;         // ganti 'class' jadi 'className'
+  class?: string;
 }
 
-export const Button = component$(({ label, onClick$, disabled, className }: ButtonProps) => {
+export const Button = component$(({ onClick$, disabled, class: className }: ButtonProps) => {
   return (
     <button
-      class={`px-4 py-2 rounded  disabled:bg-gray-400 ${className ??''}`}
-      onClick$={onClick$ ? $(onClick$) : undefined}
+      class={`px-4 py-2 rounded disabled:bg-gray-400 ${className ?? ''}`}
+      onClick$={onClick$}
       disabled={disabled}
     >
-      {label}
+      <Slot />
     </button>
   );
 });
