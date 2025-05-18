@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik";
+import { $, component$ } from "@builder.io/qwik";
 
 interface ButtonProps {
   label: string;
@@ -11,7 +11,7 @@ export const Button = component$(({ label, onClick$, disabled, className }: Butt
   return (
     <button
       class={`px-4 py-2 rounded  disabled:bg-gray-400 ${className ??''}`}
-      onClick$={onClick$}
+      onClick$={onClick$ ? $(onClick$) : undefined}
       disabled={disabled}
     >
       {label}

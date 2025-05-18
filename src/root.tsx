@@ -8,7 +8,8 @@ import { RouterHead } from "./components/router-head/router-head";
 import { isDev } from "@builder.io/qwik";
 
 import "./global.css";
-import { ImageTransformerProps, useImageProvider } from "qwik-image";
+import type { ImageTransformerProps} from "qwik-image";
+import { useImageProvider } from "qwik-image";
 
 export default component$(() => {
   /**

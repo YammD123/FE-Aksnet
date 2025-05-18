@@ -1,16 +1,9 @@
 import { component$, Slot } from "@builder.io/qwik"
-import { Link, routeLoader$, useLocation } from "@builder.io/qwik-city";
-import { Image } from "qwik-image";
+import { useLocation } from "@builder.io/qwik-city";
 
-interface navbarItem {
-    name: string,
-    url: string
-}
-interface navbarProps {
-    urlNavbar: navbarItem[]
-}
 
-export default component$(({urlNavbar}: navbarProps) => {
+
+export default component$(() => {
     const loc = useLocation();
     return (
         <nav class="flex flex-col">
