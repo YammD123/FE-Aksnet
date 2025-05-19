@@ -1,14 +1,25 @@
 import { component$ } from "@builder.io/qwik";
-import { Link } from "@builder.io/qwik-city";
+import { Link, routeLoader$ } from "@builder.io/qwik-city";
+import { Banner } from "~/components/banner";
+import { BannerType } from "~/types/banner-type";
+
+// Define the BannerType to match the API response
+
+
+// Type the route loader to return BannerType[]
+export const useBanner = routeLoader$<BannerType[]>(async () => {
+  const res = await fetch("https://api.jikan.moe/v4/seasons/now?limit=3");
+  const data = await res.json();
+  return data.data as BannerType[];
+});
 
 export default component$(() => {
+  const bannerSignal = useBanner();
   return (
     <div>
-      <h1>Home</h1>
-      <p class="text-white h-96">assa</p>
-      <div class="h-96">
-        <Link prefetch href="/">Go Base with Link</Link>
-        <a href="/">Go Base with anchor</a>
+      <Banner banners={bannerSignal.value} />
+      <div>
+        aa
       </div>
     </div>
   );
