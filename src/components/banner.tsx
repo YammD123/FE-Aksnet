@@ -28,7 +28,7 @@ export const Banner = component$(({ banners }: Props) => {
         >
           <Image
             src={banner.images.webp?.large_image_url || banner.images.webp.large_image_url}
-            class="absolute top-0 left-0 w-full h-full object-cover opacity-25"
+            class="absolute top-0 rounded left-0 w-full h-full object-cover opacity-25"
             alt={banner.title}
             layout="fullWidth"
             loading="lazy"

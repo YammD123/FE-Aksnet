@@ -12,10 +12,10 @@ export default defineConfig({
     tailwindcss()
   ],
   optimizeDeps: {
-    include: [
-      "@builder.io/qwik",
-      "@builder.io/qwik-city"
-    ]
+    // include: [
+    //   "@builder.io/qwik",
+    //   "@builder.io/qwik-city"
+    // ]
   },
   server: {
     headers: {
