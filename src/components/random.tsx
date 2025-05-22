@@ -23,10 +23,11 @@ export const RandomAnime = component$(({ random }: Props) => {
                 height={150}
                 layout="constrained"
                 loading="lazy"
+                class="hover:scale-105 transition-transform duration-500 object-cover"
               />
               <div class="flex flex-col px-2">
                 <h1 class=" text-lg">{anime.title}</h1>
-                <p class="text-sm text-ellipsis line-clamp-3 overflow-hidden">{anime.synopsis}</p>
+                <p class="text-sm text-white/80 text-ellipsis line-clamp-3 overflow-hidden">{anime.synopsis}</p>
               </div>
             </Link>
           </div>

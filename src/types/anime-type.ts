@@ -7,3 +7,9 @@ export type AnimeType = {
   episode_link:[]
   genre: [];
 }
+
+export type PaginationType = {
+  animes: AnimeType[];
+  page: number
+  totalPage: number
+}

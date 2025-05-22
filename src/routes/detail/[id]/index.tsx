@@ -6,7 +6,7 @@ export default component$(() => {
     const id = loc.params.id
     return (
         <div>
-            <h1>Detail {id}</h1>
+            <h1>Panteq {id}</h1>
         </div>
     );
 })
