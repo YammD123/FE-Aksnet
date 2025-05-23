@@ -48,20 +48,20 @@ export default component$(() => {
             <ul class="flex flex-col gap-4 items-center py-4">
               <Link
                 href="/home/"
-                class={` block ${loc.url.pathname === "/" ? "bg-blue-700" : ""}`}
+                class="w-full"
               >
-                <Button class={`flex items-center flex-col ${loc.url.pathname === "/home/" ? "bg-orange-400/25" : ""}`}>
-                  <LuHome font-size={20} color="white" />
-                  <span class="text-sm">Home</span>
+                <Button class={`flex w-full items-center flex-col ${loc.url.pathname === "/home/" ? "bg-orange-400/25 border-r-2 border-r-orange-300" : ""}`}>
+                  <LuHome font-size={20} color={loc.url.pathname === "/home/" ? "orange" : "white"} />
+                  <span class={`text-sm ${loc.url.pathname === "/home/" ? "text-orange-300" : ""}`}>Home</span>
                 </Button>
               </Link>
               <Link
                 href="/trending/"
-                class={` block ${loc.url.pathname === "/" ? "bg-blue-700" : ""}`}
+                class="w-full"
               >
-                <Button class={`flex items-center flex-col ${loc.url.pathname === "/trending/" ? "bg-orange-400/25" : ""}`}>
-                  <LuFlame font-size={20} color="white" />
-                  <span class="text-sm">Trending</span>
+                <Button class={`flex w-full items-center flex-col ${loc.url.pathname === "/trending/" ? "bg-orange-400/20  border-r-2 border-r-orange-300" : ""}`}>
+                  <LuFlame font-size={20} color={loc.url.pathname === "/trending/" ? "orange" : "white"} />
+                  <span class={`text-sm ${loc.url.pathname === "/trending/" ? "text-orange-300" : ""}`}>Trending</span>
                 </Button>
               </Link>
             </ul>

@@ -15,7 +15,7 @@ export type PaginationType = {
 }
 
 export type GenreAnimeRespone ={
-  genre: GenreAimeType[];
+  genre: GenreAimeType;
   name: string
 }
 
