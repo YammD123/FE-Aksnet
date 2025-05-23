@@ -5,7 +5,7 @@ export const Footer = component$(() => {
   return (
     <>
       <footer class="bg-zinc-950 text-white px-6 py-10 mt-10 border-t border-zinc-800">
-        <div class="max-w-7xl mx-auto flex justify-between">
+        <div class="max-w-7xl mx-auto gap-4 flex justify-between">
           {/* Logo dan deskripsi */}
           <div>
         <h1 class="text-2xl font-bold text-white tracking-wide">

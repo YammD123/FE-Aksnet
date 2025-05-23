@@ -3,13 +3,12 @@ import { Image } from "qwik-image";
 import { BannerType } from "~/types/banner-type";
 
 interface Props {
-  banners: BannerType[];
+  banners?: BannerType[];
 }
 
-export const Banner = component$(({ banners }: Props) => {
+export const Banner = component$(({ banners = [] }: Props) => {
   const currentIndex = useSignal(0);
 
-  // Automatically cycle through banners every 2 seconds
   useVisibleTask$(({ cleanup }) => {
     const interval = setInterval(() => {
       currentIndex.value = (currentIndex.value + 1) % banners.length;
@@ -19,7 +18,7 @@ export const Banner = component$(({ banners }: Props) => {
 
   return (
     <div class="relative w-full h-80 overflow-hidden py-5">
-      {banners.map((banner, index) => (
+      {banners && banners.length > 0 && banners.map((banner, index) => (
         <div
           key={index}
           class={`absolute top-0 left-0 w-full h-full transition-opacity duration-700 ease-in-out ${

@@ -13,3 +13,15 @@ export type PaginationType = {
   page: number
   totalPage: number
 }
+
+export type GenreAnimeRespone ={
+  genre: GenreAimeType[];
+  name: string
+}
+
+
+
+export type GenreAimeType = {
+  name: string;
+  anime:AnimeType[]
+}

@@ -44,7 +44,7 @@ export const AnimeList = component$(({ animes, page, totalPage }: Props) => {
                 layout="constrained"
                 loading="lazy"
               />
-              <h1 class="text-white text-sm text-ellipsis line-clamp-2 overflow-hidden">{anime.title}</h1>
+              <h1 class="text-white text-sm text-ellipsis py-1 line-clamp-1 overflow-hidden"> {anime.title}</h1>
             </Link>
           </div>
         ))}

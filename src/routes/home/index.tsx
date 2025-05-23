@@ -8,33 +8,48 @@ import { BannerType } from "~/types/banner-type";
 import { BASE_URL } from "~/utils/base-url";
 
 export const useBanner = routeLoader$<BannerType[]>(async () => {
-  const res = await fetch("https://api.jikan.moe/v4/seasons/now?limit=3");
-  const data = await res.json();
-  return data.data as BannerType[];
+  try {
+    const res = await fetch("https://api.jikan.moe/v4/seasons/now?limit=3");
+    const data = await res.json();
+    return data.data as BannerType[];
+  } catch (error) {
+    return [];
+  }
 });
 
 export const useAnimeList = routeLoader$<PaginationType>(async ({ url }) => {
-  const page = Number(url.searchParams.get("page") || 1);
-  const res = await fetch(`${BASE_URL}/anime/data?page=${page}&limit=25`);
-  const data = await res.json();
-  return { 
-    animes: data.data as AnimeType[], 
-    page, 
-    totalPage: data.totalPage };
+  try {
+    const page = Number(url.searchParams.get("page") || 1);
+    const res = await fetch(`${BASE_URL}/anime/data?page=${page}&limit=25`);
+    const data = await res.json();
+    return {
+      animes: data.data as AnimeType[],
+      page,
+      totalPage: data.totalPage,
+    };
+  } catch (error) {
+    return {
+      animes: [],
+      page: 1,
+      totalPage: 1,
+    };
+  }
 });
 
 export const useRandomAnime = routeLoader$<AnimeType[]>(async () => {
-  const res = await fetch(`${BASE_URL}/anime/random`);
-  const data = await res.json();
-  return data.data as AnimeType[];
+  try {
+    const res = await fetch(`${BASE_URL}/anime/random`);
+    const data = await res.json();
+    return data.data as AnimeType[];
+  } catch (error) {
+    return [];
+  }
 });
 
 export default component$(() => {
   const bannerSignal = useBanner();
   const animeListSignal = useAnimeList();
   const randomAnimeSignal = useRandomAnime();
-
-  const {} = animeListSignal.value;
 
   return (
     <div>

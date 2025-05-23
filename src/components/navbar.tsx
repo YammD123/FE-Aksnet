@@ -1,6 +1,6 @@
 import { component$, Slot, useSignal } from "@builder.io/qwik";
 import { Link, useLocation } from "@builder.io/qwik-city";
-import { LuHome, LuMenu, LuSearch } from "@qwikest/icons/lucide";
+import { LuFlame, LuHome, LuMenu, LuSearch } from "@qwikest/icons/lucide";
 import { Button } from "./Button/Button";
 
 export default component$(() => {
@@ -45,14 +45,23 @@ export default component$(() => {
           <aside
             class={`w-20   ${sidebarOpen.value ? "block" : "hidden"} bg-zinc-950/90 border-r md:block border-gray-900 h-full`}
           >
-            <ul class="flex flex-col items-center py-4">
+            <ul class="flex flex-col gap-4 items-center py-4">
               <Link
                 href="/home/"
                 class={` block ${loc.url.pathname === "/" ? "bg-blue-700" : ""}`}
               >
                 <Button class={`flex items-center flex-col ${loc.url.pathname === "/home/" ? "bg-orange-400/25" : ""}`}>
                   <LuHome font-size={20} color="white" />
-                  <span>Home</span>
+                  <span class="text-sm">Home</span>
+                </Button>
+              </Link>
+              <Link
+                href="/trending/"
+                class={` block ${loc.url.pathname === "/" ? "bg-blue-700" : ""}`}
+              >
+                <Button class={`flex items-center flex-col ${loc.url.pathname === "/trending/" ? "bg-orange-400/25" : ""}`}>
+                  <LuFlame font-size={20} color="white" />
+                  <span class="text-sm">Trending</span>
                 </Button>
               </Link>
             </ul>
