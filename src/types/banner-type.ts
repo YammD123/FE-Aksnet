@@ -6,4 +6,5 @@ export type BannerType = {
     }
     title: string
     synopsis: string
+    mal_id: number;
 };

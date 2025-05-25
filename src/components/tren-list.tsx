@@ -42,6 +42,13 @@ export const TrenAnimeList = component$(({genre}: TrenAnimeListProps) => {
                             </div>
                             <div>
                                 <p class="text-sm text-white/80 text-ellipsis line-clamp-3 overflow-hidden">{anime.synopsis}</p>
+                                <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mt-2">
+                                {Array.isArray(anime.genre) && anime.genre.map((genre:{name:string})=>(
+                                    <div class="text-sm bg-zinc-900 border-gray-900 p-2 rounded items-center flex justify-center text-white/100" key={genre.name}>
+                                        {genre.name}
+                                    </div>
+                                ))}
+                                </div>
                             </div>
                         </div>
                         </Link>

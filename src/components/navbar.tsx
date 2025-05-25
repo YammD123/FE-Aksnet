@@ -1,6 +1,6 @@
 import { component$, Slot, useSignal } from "@builder.io/qwik";
 import { Link, useLocation } from "@builder.io/qwik-city";
-import { LuFlame, LuHome, LuMenu, LuSearch } from "@qwikest/icons/lucide";
+import { LuBookCopy, LuFlame, LuHome, LuMenu, LuSearch, LuUserCircle } from "@qwikest/icons/lucide";
 import { Button } from "./Button/Button";
 
 export default component$(() => {
@@ -50,7 +50,7 @@ export default component$(() => {
                 href="/home/"
                 class="w-full"
               >
-                <Button class={`flex w-full items-center flex-col ${loc.url.pathname === "/home/" ? "bg-orange-400/25 border-r-2 border-r-orange-300" : ""}`}>
+                <Button class={`flex w-full transition-colors duration-500 ease-in-out items-center flex-col ${loc.url.pathname === "/home/" ? "bg-orange-400/25 border-r-2 border-r-orange-300" : ""}`}>
                   <LuHome font-size={20} color={loc.url.pathname === "/home/" ? "orange" : "white"} />
                   <span class={`text-sm ${loc.url.pathname === "/home/" ? "text-orange-300" : ""}`}>Home</span>
                 </Button>
@@ -59,9 +59,27 @@ export default component$(() => {
                 href="/trending/"
                 class="w-full"
               >
-                <Button class={`flex w-full items-center flex-col ${loc.url.pathname === "/trending/" ? "bg-orange-400/20  border-r-2 border-r-orange-300" : ""}`}>
+                <Button class={`flex w-full transition-colors duration-500 ease-in-out items-center flex-col ${loc.url.pathname === "/trending/" ? "bg-orange-400/20  border-r-2 border-r-orange-300" : ""}`}>
                   <LuFlame font-size={20} color={loc.url.pathname === "/trending/" ? "orange" : "white"} />
                   <span class={`text-sm ${loc.url.pathname === "/trending/" ? "text-orange-300" : ""}`}>Trending</span>
+                </Button>
+              </Link>
+              <Link
+                href="/gen/"
+                class="w-full"
+              >
+                <Button class={`flex w-full transition-colors duration-500 ease-in-out items-center flex-col ${loc.url.pathname === "/gen/" ? "bg-orange-400/20  border-r-2 border-r-orange-300" : ""}`}>
+                  <LuBookCopy font-size={20} color={loc.url.pathname === "/gen/" ? "orange" : "white"} />
+                  <span class={`text-sm ${loc.url.pathname === "/gen/" ? "text-orange-300" : ""}`}>Genre</span>
+                </Button>
+              </Link>
+              <Link
+                href="/profile/"
+                class="w-full"
+              >
+                <Button class={`flex w-full transition-colors duration-500 ease-in-out items-center flex-col ${loc.url.pathname === "/profile/" ? "bg-orange-400/20  border-r-2 border-r-orange-300" : ""}`}>
+                  <LuUserCircle font-size={20} color={loc.url.pathname === "/profile/" ? "orange" : "white"} />
+                  <span class={`text-sm ${loc.url.pathname === "/profile/" ? "text-orange-300" : ""}`}>Profile</span>
                 </Button>
               </Link>
             </ul>

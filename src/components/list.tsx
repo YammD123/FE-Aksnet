@@ -32,7 +32,7 @@ export const AnimeList = component$(({ animes, page, totalPage }: Props) => {
 
     {/* cardcontent */}
       <div class="grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:grid-cols-2 sm:gap-4 gap-1 w-full ">
-        {animes.map((anime) => (
+        {Array.isArray(animes) && animes.map((anime) => (
           <div class="w-32 h-60 mx-auto overflow-hidden group relative" key={anime.id}>
             <Link href={`/detail/${anime.id}`}>
               <Image
@@ -44,7 +44,7 @@ export const AnimeList = component$(({ animes, page, totalPage }: Props) => {
                 layout="constrained"
                 loading="lazy"
               />
-              <h1 class="text-white text-sm text-ellipsis py-1 line-clamp-1 overflow-hidden"> {anime.title}</h1>
+              <h1 class="text-white text-sm italic text-ellipsis py-1 line-clamp-1 overflow-hidden"> {anime.title}</h1>
             </Link>
           </div>
         ))}

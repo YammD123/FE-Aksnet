@@ -7,13 +7,13 @@ export interface Props {
   random: AnimeType[];
 }
 
-export const RandomAnime = component$(({ random }: Props) => {
+export const RandomAnime = component$(({ random = [] }: Props) => {
   return (
     <>
     <div class="w-96 rounded bg-zinc-950 flex-none border-gray-900 h-[700px] border m-1">
       <h1 class="text-white text-2x border-b text-2xl font-bold p-4">Random Anime</h1>
       <div class="grid grid-cols-1 m-4 gap-4 max-h-[600px] overflow-y-auto">
-        {random.map((anime) => (
+        {Array.isArray(random) &&  random.map((anime) => (
           <div key={anime.id}>
             <Link href={`/detail/${anime.id}`} class="flex flex-row bg-zinc-950/90 border border-gray-900">
               <Image
@@ -25,9 +25,9 @@ export const RandomAnime = component$(({ random }: Props) => {
                 loading="lazy"
                 class="hover:scale-105 transition-transform duration-500 object-cover"
               />
-              <div class="flex flex-col px-2">
+              <div class="flex flex-col gap-2 px-2">
                 <h1 class=" text-lg">{anime.title}</h1>
-                <p class="text-sm text-white/80 text-ellipsis line-clamp-3 overflow-hidden">{anime.synopsis}</p>
+                <p class="text-sm italic text-white/80 text-ellipsis line-clamp-3 overflow-hidden">{anime.synopsis}</p>
               </div>
             </Link>
           </div>

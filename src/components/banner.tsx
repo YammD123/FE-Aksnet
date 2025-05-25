@@ -18,15 +18,15 @@ export const Banner = component$(({ banners = [] }: Props) => {
 
   return (
     <div class="relative w-full h-80 overflow-hidden py-5">
-      {banners.length > 0 && banners.map((banner, index) => (
+      {Array.isArray(banners) && banners.map((banner, index) => (
         <div
-          key={index}
+          key={banner.mal_id}
           class={`absolute top-0 left-0 w-full h-full transition-opacity duration-400 ease-in-out ${
             index === currentIndex.value ? "opacity-100 z-10" : "opacity-0 z-0"
           }`}
         >
           <Image
-            src={banner.images.webp?.large_image_url || banner.images.webp.large_image_url}
+            src={banner.images.webp?.large_image_url || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHnKw8zTPIFvZRGE-bMtIlRXjsUW2BDyw9Pw&s"}
             class="absolute top-0 rounded left-0 w-full h-full object-cover opacity-25"
             alt={banner.title}
             layout="fullWidth"
