@@ -53,15 +53,27 @@ export default component$(() => {
 
   return (
     <div>
+      {bannerSignal.value.length === 0?(
+        <div class="text-white">No banners available</div>
+      ):(
       <Banner banners={bannerSignal.value} />
+      )}
       <div class="py-10 flex justify-center">
         <div class="flex md:flex-row justify-center flex-col gap-10">
+          {animeListSignal.value.animes.length === 0 ? (
+            <div class="text-white">No anime available</div>
+          ) : (
           <AnimeList
             animes={animeListSignal.value.animes}
             page={animeListSignal.value.page}
             totalPage={animeListSignal.value.totalPage}
           />
+          )}
+          {randomAnimeSignal.value.length === 0?(
+            <div class="text-white">No random anime available</div>
+          ) : (
           <RandomAnime random={randomAnimeSignal.value} />
+          )}
         </div>
       </div>
     </div>

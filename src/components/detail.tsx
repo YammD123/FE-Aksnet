@@ -5,6 +5,7 @@ import { AnimeType } from "~/types/anime-type";
 import { Button } from "./Button/Button";
 import axios from "axios";
 import { BASE_URL } from "~/utils/base-url";
+import { useAuthLoader } from "~/routes/layout";
 
 interface DetailAnimeProps {
   anime: AnimeType;
@@ -14,12 +15,17 @@ interface DetailAnimeProps {
 }
 export const DetailAnime = component$(({ anime, isFavorite }: DetailAnimeProps) => {
     const favoriteSignal = useSignal(isFavorite);
+    const useAuth = useAuthLoader();
 
 
 
     // handle add to favorite / remove from favorite
     const handleFavorite= $(async()=>{
     try {
+      if (!useAuth.value){
+        alert("You must login to add to favorite")
+        return;
+      }
       if (favoriteSignal.value) {
         const res = await axios.delete(`${BASE_URL}/favorite?id=${favoriteSignal.value.id}`, {
           withCredentials: true,
@@ -55,7 +61,7 @@ export const DetailAnime = component$(({ anime, isFavorite }: DetailAnimeProps) 
         />
         <Button 
         onClick$={handleFavorite}
-        class={`mt-4 ${favoriteSignal.value ? "bg-orange-500" : "bg-zinc-900"} flex items-center gap-2 border border-white/25 w-full`}>
+        class={`mt-4 ${favoriteSignal.value && useAuth.value ? "bg-orange-500" : "bg-zinc-900"} flex items-center gap-2 border border-white/25 w-full`}>
         <LuBookmark class="text-white/80" />
           {favoriteSignal.value ? "Remove Favorites" : "Add Favorites"}
         </Button>
