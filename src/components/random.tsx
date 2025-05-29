@@ -12,7 +12,7 @@ export const RandomAnime = component$(({ random = [] }: Props) => {
     <>
     <div class="w-96 rounded bg-zinc-950 flex-none border-gray-900 h-[700px] border m-1">
       <h1 class="text-white text-2x border-b text-2xl font-bold p-4">Random Anime</h1>
-      <div class="grid grid-cols-1 m-4 gap-4 max-h-[600px] overflow-y-auto">
+      <div class="grid grid-cols-1 custom-scrollbar m-4 gap-4 max-h-[600px] overflow-y-auto">
         {Array.isArray(random) &&  random.map((anime) => (
           <div key={anime.id}>
             <Link href={`/detail/${anime.id}`} class="flex flex-row bg-zinc-950/90 border border-gray-900">

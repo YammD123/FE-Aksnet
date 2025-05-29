@@ -4,3 +4,15 @@ body {
     @apply bg-black;
     @apply text-white;
 }
+
+/* Scrollbar untuk Chrome, Edge, dan Safari */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #f97316; /* orange-400 */
+  border-radius: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #18181b; /* zinc-900 */
+}

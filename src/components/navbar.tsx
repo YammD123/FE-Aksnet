@@ -87,7 +87,7 @@ export default component$(() => {
         )}
 
         {/* Main Content */}
-        <main class="flex-1 overflow-y-auto px-4 py-2">
+        <main class="flex-1 custom-scrollbar overflow-y-auto px-4 py-2">
           <Slot />
         </main>
       </div>

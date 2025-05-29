@@ -25,7 +25,7 @@ export default component$(() => {
             })
         }).then((res)=>{
             if (res.status === 201) {
-                loc.url.pathname = "/home/";
+              alert("Login successful");
             } else {
                 alert("Login failed. Please check your credentials.");
             }

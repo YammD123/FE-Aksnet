@@ -22,7 +22,7 @@ export const useAuthLoader = routeLoader$(async ({request}) => {
     return response.data
   } catch (error) {
     console.error("Error fetching auth data:", error);
-    return null;
+    return false
   }
 });
 

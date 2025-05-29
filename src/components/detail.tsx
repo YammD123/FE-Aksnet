@@ -63,7 +63,7 @@ export const DetailAnime = component$(({ anime, isFavorite }: DetailAnimeProps) 
         onClick$={handleFavorite}
         class={`mt-4 ${favoriteSignal.value && useAuth.value ? "bg-orange-500" : "bg-zinc-900"} flex items-center gap-2 border border-white/25 w-full`}>
         <LuBookmark class="text-white/80" />
-          {favoriteSignal.value ? "Remove Favorites" : "Add Favorites"}
+          {favoriteSignal.value && useAuth.value ? "Remove Favorites" : "Add Favorites"}
         </Button>
       </div>
       <div>

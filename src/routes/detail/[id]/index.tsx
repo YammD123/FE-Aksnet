@@ -2,6 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { Link, routeLoader$, useLocation } from "@builder.io/qwik-city";
 import axios from "axios";
 import { Button } from "~/components/Button/Button";
+import { Comment } from "~/components/comment";
 import { DetailAnime } from "~/components/detail";
 import { AnimeType } from "~/types/anime-type";
 import { EpsType } from "~/types/eps-type";
@@ -110,15 +111,14 @@ export default component$(() => {
               ))}
           </div>
         </div>
-        <div class="text-white grid lg:grid-cols-8 md:grid-cols-6 grid-cols-4 xl:grid-cols-9 border rounded-2xl border-gray-900 p-7 gap-y-2 gap-x-3 ">
+        <div class="text-white grid max-h-[460px] custom-scrollbar overflow-y-auto  lg:grid-cols-8 md:grid-cols-6 grid-cols-4 xl:grid-cols-9 border rounded-2xl border-gray-900 p-7 gap-y-2 gap-x-3 ">
           {epsLinkSignal.value.map((eps) => (
             <Link 
             key={eps.id} href={`/detail/${id}?eps=${eps.episode_number}`}>
               <Button
                 class={` border border-gray-950 text-center w-full  font-bold items-center justify-center flex p-3 px-5 rounded 
                     ${
-                      loc.url.searchParams.get("eps") ===
-                      String(eps.episode_number)
+                      loc.url.searchParams.get("eps") === String(eps.episode_number)
                         ? "text-orange-300 bg-orange-400/45"
                         : "text-white/70 italic bg-zinc-950 border hover:text-white transition-colors"
                     }`}
@@ -134,6 +134,9 @@ export default component$(() => {
           favoriteSignal.value ? { id: favoriteSignal.value.id } : null
         }
         anime={animeIdSignal.value}
+      />
+      <Comment
+      epsId={epsSignal.value?.id} 
       />
     </>
   );
