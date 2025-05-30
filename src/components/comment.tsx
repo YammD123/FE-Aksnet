@@ -4,10 +4,12 @@ import { BASE_URL } from "~/utils/base-url";
 import { Button } from "./Button/Button";
 import { LuSend } from "@qwikest/icons/lucide";
 import { NestedComment } from "./nested-comment";
+import { useAuthLoader } from "~/routes/layout";
 
 export const Comment = component$(({epsId}:{epsId:string}) => {
     const commentDefaultSignal = useSignal<string | undefined>("");
     const commentTrigerSignal = useSignal(0);
+    const auth = useAuthLoader();
 
 
     const commentResource = useResource$(async ({ track }) => {
@@ -18,6 +20,10 @@ export const Comment = component$(({epsId}:{epsId:string}) => {
     })
 
     const handleAddComment = $(async () => {
+        if (!auth.value) {
+            alert("You must login to add a comment")
+            return
+        }
         const res = await axios.post(`${BASE_URL}/comment`, {
             episode_id: epsId,
             content: commentDefaultSignal.value,
@@ -33,7 +39,6 @@ export const Comment = component$(({epsId}:{epsId:string}) => {
         <div class="flex flex-col p-4 rounded gap-2 border border-gray-900 my-4">
             <div class="flex flex-col gap-2">
                 <span class="text-white text-2xl font-semibold">Comments</span>
-                <p>{epsId}</p>
                 {commentDefaultSignal.value && (               
                 <Button
                 onClick$={handleAddComment} 
@@ -44,7 +49,7 @@ export const Comment = component$(({epsId}:{epsId:string}) => {
                 <textarea 
                 bind:value={commentDefaultSignal}
                 placeholder="Add a comment" 
-                class="bg-zinc-950 p-3 text-sm border-2 focus:outline-none w-full h-15 rounded border-gray-950"></textarea>
+                class="bg-zinc-950 p-3 text-sm border-2 focus:outline-none w-full  h-15 rounded border-gray-950"></textarea>
                 <hr class="border-gray-900 mt-4 "/>
             </div>
             <Resource
@@ -58,7 +63,8 @@ export const Comment = component$(({epsId}:{epsId:string}) => {
                     ):(
                         <NestedComment
                         comments={comments} 
-                        trigerSignal={commentTrigerSignal.value} 
+                        epsId={epsId}
+                        trigerSignal={commentTrigerSignal} 
                         />
                     )}
                 </div>

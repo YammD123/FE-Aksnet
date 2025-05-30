@@ -1,11 +1,15 @@
-import { component$, Slot, useSignal } from "@builder.io/qwik";
-import { Link, useLocation } from "@builder.io/qwik-city";
+import { $, component$, Slot, useSignal } from "@builder.io/qwik";
+import { Link, useLocation, useNavigate } from "@builder.io/qwik-city";
 import { LuBookCopy, LuFlame, LuHome, LuMenu, LuSearch, LuUserCircle } from "@qwikest/icons/lucide";
 import { Button } from "./Button/Button";
 
 export default component$(() => {
   const loc = useLocation();
   const sidebarOpen = useSignal(false);
+  const serachSignal = useSignal("");
+  const nav = useNavigate();
+
+
   return (
     <div class="flex flex-col h-screen overflow-hidden">
       {/* Navbar */}
@@ -19,12 +23,23 @@ export default component$(() => {
               <input
                 placeholder="Search"
                 type="text"
+                bind:value={serachSignal}
                 class="bg-zinc-900/75 border border-white/65 focus:outline-none rounded-md px-10 py-1 w-full"
               />
+              <button
+              onClick$={()=>{
+                if(serachSignal.value === ""){
+                  return
+                }
+                nav(`/search/${serachSignal.value}`)
+                serachSignal.value = ""
+              }}
+               type="submit" class="absolute left-3 top-1/2 transform -translate-y-1/2">
               <LuSearch
                 class="absolute left-3 top-1/2 transform -translate-y-1/2"
                 color="white"
               />
+              </button>
             </div>
             <div>
               <button
